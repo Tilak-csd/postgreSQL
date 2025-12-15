@@ -1,6 +1,6 @@
 
 // M V C => model view artitecture
-
+// creating a connection to the PostgreSQL db
 import { Client } from "pg";
 
 const client = new Client({
@@ -9,6 +9,7 @@ const client = new Client({
 
 client.connect()
 
+// Creating a Table in the database
 async function createUserTable() {
     const result = await client.query(`
             CREATE TABLE users (
