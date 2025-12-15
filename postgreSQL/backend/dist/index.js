@@ -1,14 +1,11 @@
-
+"use strict";
 // M V C => model view artitecture
-
-import { Client } from "pg";
-
-const client = new Client({
+Object.defineProperty(exports, "__esModule", { value: true });
+const pg_1 = require("pg");
+const client = new pg_1.Client({
     connectionString: 'postgresql://neondb_owner:npg_5FfToYtqEM2D@ep-flat-dew-a4gxsvu0-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
-})
-
-client.connect()
-
+});
+client.connect();
 async function createUserTable() {
     const result = await client.query(`
             CREATE TABLE users (
@@ -18,8 +15,6 @@ async function createUserTable() {
             created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
             )
         `);
-        console.log(result);
-        
+    console.log(result);
 }
-
 createUserTable();
